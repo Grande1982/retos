@@ -37,124 +37,132 @@ public class Main {
         // TODO code application logic here
 
         //String[] puntuacion = {"P1", "P1", "P2", "P2", "P1", "P2", "P1", "P1"};
-        String[] puntuacion = {"P1", "P2", "P2", "P1", "P1", "P2", "P1", "P2", "P2", "P2"};
+        //String[] puntuacion = {"P1", "P2", "P2", "P1", "P1", "P2", "P1", "P2", "P2", "P2"};
+        
+        //probamos a meter mas puntos haber si termina el juego correctamente
+        String[] puntuacion = {"P1", "P1", "P1", "P1", "P1","P1", "P1", "P1", "P1", "P1"};
         String contadorP1 = "Love", contadorP2 = "Love";
-       
+        boolean finJuego = false;
 
         for (String punto : puntuacion) {
 
-            switch (punto) {
-                case "P1":
-                     switch (contadorP1) {
-                         case "Love":
-                            contadorP1 = "15";
-                            System.out.println(contadorP1 + "-" + contadorP2);
-                            break;
+            if(finJuego != true){
+                switch (punto) {
+                    case "P1":
+                        switch (contadorP1) {
+                            case "Love":
+                                contadorP1 = "15";
+                                System.out.println(contadorP1 + "-" + contadorP2);
+                                break;
 
-                        case "15":
-                            contadorP1 = "30";
-                            System.out.println(contadorP1 + "-" + contadorP2);
-                            break;
+                            case "15":
+                                contadorP1 = "30";
+                                System.out.println(contadorP1 + "-" + contadorP2);
+                                break;
 
-                        case "30":
-                            if (contadorP2.equalsIgnoreCase("40")) {
+                            case "30":
+                                if (contadorP2.equalsIgnoreCase("40")) {
+                                    contadorP1 = "Deuce";
+                                    contadorP2 = "Deuce";
+                                    System.out.println(contadorP1);
+
+                                } else {
+                                    contadorP1 = "40";
+                                    System.out.println(contadorP1 + "-" + contadorP2);
+                                }
+                                break;
+
+                            case "40":
+                                System.out.println("Ha ganado el P1");
+                                contadorP1 = "Love";
+                                contadorP2 = "Love";
+                                finJuego = true;
+                                break;
+
+                            case "Deuce":
+
+                                contadorP1 = "Ventaja P1";
+                                contadorP2 = "desventaja p2";
+                                System.out.println(contadorP1);
+                                break;
+
+                            case "Ventaja P1":
+
+                                System.out.println("Ha ganado el P1");
+                                contadorP1 = "Love";
+                                contadorP2 = "Love";
+                                finJuego = true;
+                                break;
+
+                            case "desventaja p1":
+
                                 contadorP1 = "Deuce";
                                 contadorP2 = "Deuce";
                                 System.out.println(contadorP1);
-
-                            } else {
-                                contadorP1 = "40";
+                                break;
+                        }
+                        break;
+                    case "P2":
+                        switch (contadorP2) {
+                            case "Love":
+                                contadorP2 = "15";
                                 System.out.println(contadorP1 + "-" + contadorP2);
-                            }
-                            break;
+                                break;
 
-                        case "40":
-                            System.out.println("Ha ganado el P2");
-                            contadorP1 = "Love";
-                            contadorP2 = "Love";
-                            break;
+                            case "15":
+                                contadorP2 = "30";
+                                System.out.println(contadorP1 + "-" + contadorP2);
+                                break;
 
-                        case "Deuce":
+                            case "30":
+                                if (contadorP1.equalsIgnoreCase("40")) {
+                                    contadorP1 = "Deuce";
+                                    contadorP2 = "Deuce";
+                                    System.out.println(contadorP2);
 
-                            contadorP1 = "Ventaja P1";
-                            contadorP2 = "desventaja p2";
-                            System.out.println(contadorP1);
-                            break;
+                                } else {
+                                    contadorP2 = "40";
+                                    System.out.println(contadorP1 + "-" + contadorP2);
+                                }
+                                break;
 
-                        case "Ventaja P1":
+                            case "40":
+                                System.out.println("Ha ganado el P2");
+                                contadorP1 = "Love";
+                                contadorP2 = "Love";
+                                finJuego = true;
+                                break;
 
-                            System.out.println("Ha ganado el P1");
-                            contadorP1 = "Love";
-                            contadorP2 = "Love";
-                            break;
+                            case "Deuce":
 
-                        case "desventaja p1":
+                                contadorP2 = "Ventaja P2";
+                                contadorP1 = "desventaja p1";
+                                System.out.println(contadorP2);
+                                break;
 
-                            contadorP1 = "Deuce";
-                            contadorP2 = "Deuce";
-                            System.out.println(contadorP1);
-                            break;
-                     }
-                    break;
-                case "P2":
-                    switch (contadorP2) {
-                        case "Love":
-                            contadorP2 = "15";
-                            System.out.println(contadorP1 + "-" + contadorP2);
-                            break;
+                            case "Ventaja P2":
 
-                        case "15":
-                            contadorP2 = "30";
-                            System.out.println(contadorP1 + "-" + contadorP2);
-                            break;
+                                System.out.println("Ha ganado el P2");
+                                contadorP1 = "Love";
+                                contadorP2 = "Love";
+                                finJuego = true;
+                                break;
 
-                        case "30":
-                            if (contadorP1.equalsIgnoreCase("40")) {
+                            case "desventaja p2":
+
                                 contadorP1 = "Deuce";
                                 contadorP2 = "Deuce";
                                 System.out.println(contadorP2);
+                                break;
+                        }
+                        break;
+                    default:
+                        System.out.println("Error al ejecutar el programa");
+                        break;
 
-                            } else {
-                                contadorP2 = "40";
-                                System.out.println(contadorP1 + "-" + contadorP2);
-                            }
-                            break;
-
-                        case "40":
-                            System.out.println("Ha ganado el P2");
-                            contadorP1 = "Love";
-                            contadorP2 = "Love";
-                            break;
-
-                        case "Deuce":
-
-                            contadorP2 = "Ventaja P2";
-                            contadorP1 = "desventaja p1";
-                            System.out.println(contadorP2);
-                            break;
-
-                        case "Ventaja P2":
-
-                            System.out.println("Ha ganado el P2");
-                            contadorP1 = "Love";
-                            contadorP2 = "Love";
-                            break;
-
-                        case "desventaja p2":
-
-                            contadorP1 = "Deuce";
-                            contadorP2 = "Deuce";
-                            System.out.println(contadorP2);
-                            break;
-                    }
-                    break;
-                default:
-                    System.out.println("Error al ejecutar el programa");
-                    break;
-
+                }
             }
 
-            //juego.add(punto);*/
         }
 
     }
