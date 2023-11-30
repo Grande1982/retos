@@ -11,15 +11,22 @@
 import java.time.Instant;
 import java.util.Date;
 
+
 public class Main {
     public static void main(String[] args) {
 
-        long semillas = System.currentTimeMillis();
-        int resultado;
+        long num;
+        //num = num * num + num;
+        //System.out.println("El número aleatorio es: " + (num % 101));
 
-        System.out.println(semillas);
-        resultado = (int)semillas/10000000;
-        System.out.println(resultado);
+        for (int i = 0; i < 6; i++) {
+            num = System.currentTimeMillis();
+
+            //num = num * num + num;
+            System.out.println("El número aleatorio es: " + (num % 101));
+        }
+
+
 
         /*Date pseudoAleatorio1 = Date.from(Instant.now());
 
@@ -41,8 +48,6 @@ public class Main {
                 System.out.println("2-numero aleatorio: "+resultado / 112.3);
             }
         }*/
-
-
 
 
     }
