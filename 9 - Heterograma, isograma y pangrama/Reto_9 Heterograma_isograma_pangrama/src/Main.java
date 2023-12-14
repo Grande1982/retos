@@ -38,7 +38,14 @@ public class Main {
             System.out.println("No es isograma");
         }
 
-        pangrama(cadena);
+        boolean pant = pangrama(cadena);
+
+        if (pant) {
+            System.out.println("Es Pangrama");
+        } else {
+            System.out.println("No es Pangrama");
+        }
+
 
     }
 
@@ -127,7 +134,7 @@ public class Main {
 
     }
 
-    public static void pangrama(String cadena) {
+    public static boolean pangrama(String cadena) {
 
         int contadorInicio = 0, contadorFinal = 0;
         ArrayList<Character> contenedorLetras = new ArrayList<Character>();
@@ -142,21 +149,31 @@ public class Main {
             contenedorLetras.add(caracter1);
         }
 
-
+        Map<Character, Integer> contadorCV = new HashMap<>();
+        int valor=0;
         for (int j = 0; j < contenedorLetras.size(); j++) {
             caracter1 = contenedorLetras.get(j);
 
-            for (int k = 0; k < contenedorLetras.size(); k++) {
+            for (int k = 0; k < abecedario.length; k++) {
                 caracter2 = abecedario[k];
-                if (Character.compare(caracter1, caracter2) != 0) {
-
-                    contadorFinal += 1;
-                }else{
-                    contadorFinal = 1;
+                //System.out.println( "letra "+caracter1+ " compara "+caracter2);
+                if (Character.compare(caracter1, caracter2) == 0) {
+                    valor = 1;
+                    contadorCV.put(caracter1, valor);
                 }
 
             }
-            System.out.println(contadorFinal);
+
+
+
+        }
+        //System.out.println("contadorCV " + contadorCV.size());
+        //System.out.println("valores " + contadorCV.values());
+
+        if (contadorCV.size() == 27) {
+            return true;
+        } else {
+            return false;
         }
     }
 
